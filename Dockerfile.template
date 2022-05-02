@@ -6,7 +6,7 @@
 FROM ghcr.io/upackages/ubuntu:latest
 
 LABEL maintainer="%%MAINTAINER%%"
-LABEL org.opencontainers.image.source %%REPOSITORY%%
+LABEL org.opencontainers.image.source "%%REPOSITORY%%"
 LABEL org.opencontainers.image.description The Java %%JAVA_VERSION%% version by Unately
 
 RUN apt-get -qq update && \

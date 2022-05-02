@@ -6,7 +6,7 @@
 FROM ghcr.io/upackages/ubuntu:latest
 
 LABEL maintainer="hello@unately.com"
-LABEL org.opencontainers.image.source https://github.com/upackages/java
+LABEL org.opencontainers.image.source "https://github.com/upackages/java"
 LABEL org.opencontainers.image.description The Java 17 version by Unately
 
 RUN apt-get -qq update && \
