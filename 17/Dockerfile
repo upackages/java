@@ -11,11 +11,11 @@ LABEL org.opencontainers.image.description The Java 17 version by Unately
 
 RUN apt-get -qq update && \
     apt-get -qq -y --no-install-recommends install gnupg software-properties-common && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9 && \
-    apt-add-repository "deb https://repos.azul.com/azure-only/zulu/apt stable main" && \
+    curl -s https://repos.azul.com/azul-repo.key | sudo gpg --dearmor -o /usr/share/keyrings/azul.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" | sudo tee /etc/apt/sources.list.d/zulu.list && \
     apt-get -qq update && \
     apt-get -qq -y dist-upgrade && \
-    apt-get -qq -y --no-install-recommends install zulu-17-azure-jre-headless && \
+    apt-get -qq -y --no-install-recommends install zulu17-ca-jdk-headless && \
     apt-get -qq -y purge gnupg software-properties-common && \
     apt -y autoremove && \
     rm -rf /var/lib/apt/lists/*
